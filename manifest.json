@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "Lyli's Wishlist",
+  "version": "1.0.0",
+  "description": "Расширение для сохранения желаемых товаров 💖",
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "public/16.png",
+      "48": "public/48.png",
+      "128": "public/128.png"
+    }
+  },
+  "background": {
+  "service_worker": "src/background/background.js",
+  "type": "module"
+  },
+  "permissions": ["storage", "tabs", "activeTab", "scripting"],
+  "host_permissions": ["<all_urls>"],
+  "content_scripts": [
+    {
+      "matches": ["https://*/*", "http://*/*"],
+      "js": ["src/content/content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
