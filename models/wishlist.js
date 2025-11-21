@@ -1,15 +1,14 @@
-'use strict';
-module.exports = (sequelize, DataTypes) => {
-  const Wishlist = sequelize.define('Wishlist', {
-    product_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    }
-  });
+// src/models/wishlist.js
+import { DataTypes } from "sequelize";
+import { sequelize } from "../config/db.js";
 
-  Wishlist.associate = function(models) {
-    Wishlist.belongsTo(models.Product, { foreignKey: 'product_id' });
-  };
+export const Wishlist = sequelize.define("Wishlist", {
+  product_id: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+});
 
-  return Wishlist;
+Wishlist.associate = (models) => {
+  Wishlist.belongsTo(models.Product, { foreignKey: "product_id" });
 };
